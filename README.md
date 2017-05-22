@@ -3,4 +3,10 @@ DaQAR - a vocabulary for the specification and exchange of Data Quality Assessme
 
 Further description at http://purl.org/net/vsr/daqar
 
-Contact: andre.langer@informatik.tu-chemnitz.de
+Contact: 
+
+André Langer
+Professorship for Distruted and Self-Organizing Systems
+Chemnitz University of Technology
+Germany
+andre.langer@informatik.tu-chemnitz.de
