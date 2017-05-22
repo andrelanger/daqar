@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta lang="" property="dc:language" content="en">
+  <title>DaQAR - The Data Quality Assessment Requirements Vocabulary</title>
+  <link rel="stylesheet" href="https://vsr-web.informatik.tu-chemnitz.de/daqar/style.css">
+  <link rel="canonical" href="https://purl.org/net/vsr/daqar/">
+  <link href="daqar.rdf" rel="alternate"  type="application/rdf+xml" />
+  <style>
+	table.definition th:first-child { width: 200px; }
+  </style>
+</head>
+<body>
+  <div>
+    <h1 property="dcterms:title">DaQAR - The Data Quality Assessment Requirements Vocabulary</h1>
+    <h2>André Langer, Professorship for Distributed and Self-Organizing Systems, Chemnitz University of Technology, Germany. <time property="dcterms:issued" class="dt-published" datetime="2017-05-14">14 May 2017</time></h2>
+
+    <hr title="Separator for header">
+  </div>
+
+  <section property="dc:abstract">
+    <h2>Abstract</h2>
+    <p>The World Wide Web represents a tremendous source of
+information with resources of varying data quality from almost arbitrary
+knowledge domains. The decision process to select the best data source
+for current business requirements is not trivial. In the past, research
+has already focused on related quality aspects such as vocabularies to
+represent data quality metrics and measurements (DQV) or notations to
+represent and validate structural requirements (SHACL). But a consistent
+universal semantic approach to define specific quality requirements for
+assessment purposes from the data consumer side is still missing. Therefore,
+we address this challenge and present DaQAR - an ontology that is
+capable of defining arbitrary quality requirements on both data instance,
+schema and service level in a uniform fashion. This formalization includes
+desired measurement result boundaries, a customizable calculation as
+well as comprehensible quality rating scores. It can be used for data
+quality assessment purposes to compare multiple eligible data resources
+on particular metrics and attributes of current interest.</p>
+  </section>
+
+  <section typeof="bibo:Chapter" resource="#namespaces" property="bibo:hasPart">
+    <h2><span class="secno">1. </span>Namespaces</h2>
+    <p>
+    </p>
+    <p>The table below indicates the full list of namespaces and prefixes used in this document.</p>
+    <table id="namespacesTable">
+      <thead>
+        <tr>
+          <th>Prefix</th>
+          <th>Namespace</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dqr</td>
+          <td>http://purl.org/net/vsr/daqar#</td>
+        </tr>
+        <tr>
+          <td>dqv</td>
+          <td>http://www.w3.org/ns/dqv#</td>
+        </tr>
+        <tr>
+          <td>dcat</td>
+          <td>http://www.w3.org/ns/dcat#</td>
+        </tr>
+        <tr>
+          <td>dcterms</td>
+          <td>http://purl.org/dc/terms/</td>
+        </tr>		
+        <tr>
+          <td>shacl</td>
+          <td>http://www.w3.org/ns/shacl#</td>
+        </tr>			
+        <tr>
+          <td>void</td>
+          <td>http://rdfs.org/ns/void#</td>
+        </tr>		
+        <tr>
+          <td>muo</td>
+          <td>http://purl.oclc.org/NET/muo/muo#</td>
+        </tr>			
+        <tr>
+          <td>rdf</td>
+          <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+        </tr>	
+		<tr>
+          <td>xsd</td>
+          <td>http://www.w3.org/2001/XMLSchema#</td>
+        </tr>	
+		<tr>
+          <td>ex</td>
+          <td>http://example.org/</td>
+        </tr>			
+      </tbody>
+    </table>
+
+  </section>
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">2. </span>Vocabulary Overview</h2>
+	
+	DaQAR seeks to reuse already established data related vocabularies,
+primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
+	
+	<figure>
+      <img src="https://vsr-web.informatik.tu-chemnitz.de/daqar/erd.png">
+      <figcaption>Fig. <span class="figno">1</span> <span class="fig-title">DaQAR data model with main relations</span></figcaption>
+    </figure>
+	
+  </section>
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">3.</span>Vocabulary specification</h2>
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.1 </span>Class: Quality Measurement </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="QualityRequirementSpec">dqr:QualityRequirementSpec</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a specification of requirements on a data set or data service from consumer side for quality assessment purposes
+            </td>
+          </tr>
+          <tr>
+            <td class="prop">Note:</td>
+            <td>
+			A dqr:QualityRequirementSpec is an abstract definition of requirements, conditions and desired metric values. It is basically independent from a concret data set and can be used among multiple data sets or data set states for comparison purposes.
+			</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.1.1 </span>Property: hasRequirements</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasRequirements">dqr:hasRequirements</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition: </td>
+              <td>Indicates the QualityRequirements that have to be checked</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirementSpec</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>All QualityRequirements should be computeable independently.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.1.2 </span>Property: hasAssessment</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessment">dqr:hasAssessment</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the definition of an overall assessment relation how the quality of a data source has to be calculated </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirementSpec</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityAssessmentCombination</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>If this property is not provided, the dqr:QualityRequirementSpec represents a list of quality metrics without an assessment instruction.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	  
+	  
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.2 </span>Class: QualityAssessmentCombination </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="QualityAssessmentCombination">dqr:QualityAssessmentCombination</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents an instruction on how to combine the results from multiple dqr:QualityAssessments to an overall assessment score
+            </td>
+          </tr>
+          <tr>
+            <td class="prop">Note:</td>
+            <td>If there is only one quality requirement that has to be assessed, this class represents simply a proxy container for this calculation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.2.1 </span>Property: ReturnType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ReturnType">dqr:ReturnType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the numeric type of the returned assessment result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessmentCombination</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:ReturnType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>The class dqr:ReturnType currently contains the concepts <br/>
+			  <ul><li>dqr:QualityRatio for a decimal representation 0.0 (worst) <= DQ <= 1.0 (best)</li>
+			  <li>dqr:QualityStar for an integer representation 0 (worst) <= DQ <= 5 (best)</li>
+			  <li>dqr:QualityGrade for an integer representation 1 (best) <= DQ <= 6 (worst)</li></ul>  If the property is not provided at all, dqr:QualityRatio is assumed.
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.2.2 </span>Property: hasAssessmentTerms</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessmentTerms">dqr:hasAssessmentTerms</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Represents a list of independent QualityAssessment subcalculations that should be combined to an overall assessment result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessmentCombination</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityAssessmentTerm</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>-->
+          </tbody>
+        </table>
+      </section>	 	
+
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.3 </span>Class: QualityAssessmentTerm </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="QualityAssessmentTerm">dqr:QualityAssessmentTerm</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a weighted assessment sub-calculation for a particular requirement
+            </td>
+          </tr>
+		  <!--
+          <tr>
+            <td class="prop">Note:</td>
+            <td></td>
+          </tr>
+		  -->
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.3.1 </span>Property: hasWeight</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasWeight">dqr:hasWeight</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the influence of the current assessment to the overall assessment score</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessmentTerm</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:decimal, 0.0 <= value <= 1.0</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note: </td>
+              <td>dqr:QualityAssessmentCombination basically calculates a normalized value, so the sum of all weights should be 1.0 in total if not otherwise explicitly intended</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.3.2 </span>Property: hasAssessment</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessment">dqr:hasAssessment</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates a quality assessment that shall be calculated</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessmentTerm</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityAssessment</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <!--
+			<tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	 	  	  
+	  
+	  
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.4 </span>Class: QualityRequirement </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="QualityRequirement">dqr:QualityRequirement</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a particular measurable quality aspect of interest whose result is assesseable
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.1 </span>Property: hasRequirementType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasRequirementType">dqr:hasRequirementType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td><Indicates the type of examined quality aspect /td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:RequirementType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>
+			  Basically, any URI-representable concept can be used as a requirement specification. URIs of particular quality metrics are of major interest. But we could also use SHACL URIs from template graphs as a requirement description. In order to programmatically distinguish these different concepts, the class dqr:RequirementType currently contains the concepts<br/>
+			  <ul>
+			  <li>dqr:SimpleMetric for directly calculable metrics such as DQV, daq or ISO metrics</li>
+			  <li>dqr:ShapeConstraint for SHACL-like template graph descriptors that are run by a separate processor</li></ul>
+			  
+			  The dqr:RequirementType class is open for future extensions.<br/>
+			  If the property is not mentioned at all, dqr:SimpleMetric is assumed.
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.2 </span>Property: hasRequirementConcept</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasRequirementConcept">dqr:hasRequirementConcept</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Represents the particular quality concepts in form of a URI</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>This can be a daq:Metric, a dqv:Metric, a SHACL URL or any other URI representing a quality requirement</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	 	  	 
+	  
+	        <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.3 </span>Property: hasImplementation</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasImplementation">dqr:hasImplementation</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates if the calculation relies on a concrete, mandatory implementation of a quality requirement concept</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>Sometimes, the same quality metric is implemented in different interpretations and its calculation can lead to different results. This property allows it to specify an optional URI representing a concrete tool, service or implementation that should be used for measuring the concept defined</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	
+	  
+	  <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.4 </span>Property: expectedDataType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="expectedDataType">dqr:expectedDataType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the expected return type of the measurement result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>Currently, some descriptions of recommended DQ metrics leave it open, e.g., if the caculation should return an integer value for all instances satisfying the requirement, or a ratio, or something totally different. The dqr:expectedDataType makes this definition explicit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	
+	  
+	  <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.5 </span>Property: hasUnit</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasUnit">dqr:hasUnit</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the unit of the measurement result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>It is helpful to explicitly state the unit of a measurement result in the requirement description if applicable, e.g., if it returns seconds or milliseconds. We currently reommend to use the Measurement Units Ontology (MUO).</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	
+
+	  <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.6 </span>Property: hasAssessment</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessment">dqr:hasAssessment</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates a calculation function for assessing the measurement result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityAssessment</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>The object can either be an individual definition of an assessment function. It can also be a URL to a well-known assessment function that was already defined somewehere else. If the property is not provided at all, the quality requirement description simply states the desired quality concept of interest along with some additional requirement meta data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	
+
+	  <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.4.7 </span>Property: hasAssessmentParam</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessmentParam">dqr:hasAssessmentParam</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Specifies parameter values that can be used in combination with well-known assessment function definitions.</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityRequirement</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:QualityAssessmentParam</td>
+            </tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>-->
+          </tbody>
+        </table>
+      </section>		  
+	  
+	  
+	  
+	  
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.5 </span>Class: AssessmentParam </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="AssessmentParam">dqr:AssessmentParam</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a parameter with a defined value that can be reused by an assessment tool in combination with a well-known dqr:Assessment function
+            </td>
+          </tr>
+          <tr>
+            <td class="prop">Note:</td>
+            <td>In order to map and use these parameter values, they should have a well-known parameter type that corresponds to the parameter type used in the well-known assessment function</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.5.1 </span>Property: hasParamType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasParamType">dqr:hasParamType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentParam</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:ParamType</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>The class dqr:Param is open for extensions and currently contains the concepts
+			  <ul>
+			  <li>dqr:LowerThanParam</li>
+			  <li>dqr:LowerEqualThanParam</li>
+			  <li>dqr:AverageParam</li>
+			  <li>dqr:GreaterThanParam</li>
+			  <li>dqr:GreaterEqualThanParam</li>
+			  
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+	  
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.5.2 </span>Property: hasValue</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasValue">dqr:hasValue</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Specified the value of the assessment parameter</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessmentParam</td>
+			  </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maxmium cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  
+	  
+
+	  
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.6 </span>Class: QualityAssessment </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="QualityAssessment">dqr:QualityAssessment</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents the defintion of a function of measurement boundaries on how to assess the measured value of a related quality concept of interest
+            </td>
+          </tr>
+          <tr>
+            <td class="prop">Note:</td>
+            <td>This can either be an individually defined assessment function or a well-known assessment function. A well-known assessment function is a globally provided QualityAssessment URL for re-occuring assessment function patterns. <br/>
+			Currently, the following well-known QualityAssessment function descriptions are supported:<br/>
+			<ul>
+			<li>dqr:MaxValueAssessmentFunction - a linear quality assessment function for a measurement value from 0.0 (best) to a max value (worst), dqr:QualityAssessmentParam dqr:LowerThanParam</li>
+			</ul>
+			This list is open for future extensions.
+			</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.6.1 </span>Property: ReturnType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ReturnType">dqr:ReturnType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the type of the returned value for the assessment result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessment</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:ReturnType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>See section 3.2.1 for further details</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+	  
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.6.2 </span>Property: ReturnValue</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ReturnValue">dqr:ReturnValue</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the computation type of the returned assessment value</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessment</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:ReturnValue</td>
+            </tr>
+            <tr><td class="prop">Maxmium cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>This is an additional meta information, if the assessment value is actually calculated by a particular assessment function. The class dqr:ReturnValue currently contains the concepts<br/>
+			  <ul>
+			  <li>dqr:FunctionalValue</li>
+			  <li>dqr:ConstantValue</li>
+			  </ul>
+			  and is open for future extensions.
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	 	  
+	  
+	  <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.6.3 </span>Property: hasCondition</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasCondition">dqr:hasCondition</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Specifies an operation or a condition that has to be met by the measured value in order to calculate an assessment result</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:QualityAssessment</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	
+
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.7 </span>Class: AssessmentCondition </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="AssessmentCondition">dqr:AssessmentCondition</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>Represents a measurement value range and a mapping function to an assessment value 
+            </td>
+          </tr>
+		  <!--
+          <tr>
+            <td class="prop">Note:</td>
+            <td></td>
+          </tr>
+		  -->
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.7.1 </span>Property: ValueLowerThan</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ValueLowerThan">dqr:ValueLowerThan</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>
+			  Indicates what happens if the measured value is lower than the specified value
+			  </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  
+	  
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.7.2 </span>Property: ValueLowerEqualThan</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ValueLowerEqualThan">dqr:ValueLowerEqualThan</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>
+			  Indicates what happens if the measured value is lower or euqal than the specified value
+			  </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  
+
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.7.3 </span>Property: ValueGreaterThan</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ValueGreaterThan">dqr:ValueGreaterThan</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>
+			  Indicates what happens if the measured value is greater than the specified value
+			  </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  
+
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.7.4 </span>Property: ValueGreaterEqualThan</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ValueGreaterEqualThan">dqr:ValueGreaterEqualThan</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>
+			  Indicates what happens if the measured value is greater or euqal than the specified value
+			  </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.7.5 </span>Property: hasAssessmentFunction</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasAssessmentFunction">dqr:hasAssessmentFunction</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Defines a mapping function how to represent the measured value as an assessment value</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentCondition</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:AssessmentFunction</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  	  
+	  
+	  
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.8 </span>Class: AssessmentFunction </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="AssessmentFunction">dqr:AssessmentFunction</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a mapping function to map an actual measurement value to a corrresponding assessment value
+            </td>
+          </tr>
+		  <!--
+          <tr>
+            <td class="prop">Note:</td>
+            <td></td>
+          </tr>
+		  -->
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.8.1 </span>Property: hasFunctionType</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasFunctionType">dqr:hasFunctionType</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Indicates the functional type of the calculation</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentFunction</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>dqr:FunctionType</td>
+            </tr>
+            <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+            <tr>
+              <td class="prop">Note:</td>
+              <td>This property specifies the mathematical function how to map a measured value to an assessment value. The class dqr:FunctionType currently contains the concepts<br/>
+			  <ul>
+			  <li>dqr:LinearFunction - defined through a dqr:StartValue and dqr:EndValue</li>
+			  <li>dqr:ConstantFunction - defined through a dqr:ReturnValue</li>
+			  <li>dqr:CustomFunction - defined through a dqr:CustomFunctionTerm</li>
+			  </ul>
+			  and is open for future extensions. It can also be considered to represent this concept through other appropriate existing vocabularies.
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>	  
+	  	
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.8.2 </span>Property: hasFunctionParam</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="hasFunctionParam">dqr:hasFunctionParam</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Defines values for the functional parameters required by dqr:FunctionType</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:AssessmentFunction</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+			
+            <tr>
+              <td class="prop">Note:</td>
+              <td>The property name of the provided  dqr:FunctionParam s has to correspond to the params required by a dqr:FunctionType function</td>
+            </tr>
+			
+          </tbody>
+        </table>
+      </section>	 		
+	  
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">3.9 </span>Class: FunctionParam </h3>
+
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th><a name="FunctionParam">dqr:FunctionParam</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition:</td>
+            <td>
+			Represents a bound value used by a dqr:FunctionType function for calculation purposes
+            </td>
+          </tr>
+		  <!--
+          <tr>
+            <td class="prop">Note:</td>
+            <td></td>
+          </tr>
+		  -->
+        </tbody>
+      </table>
+
+      <p>The following properties can be used with instances of this class:
+      </p>
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.9.1 </span>Property: StartValue</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="StartValue">dqr:StartValue</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Represents the start value of a function</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:FunctionParam</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	  
+	  		  
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.9.2 </span>Property: EndValue</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="EndValue">dqr:EndValue</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Represents the end value of a function</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:FunctionParam</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>	
+
+      <section typeof="bibo:Chapter" property="bibo:hasPart">
+        <h4><span class="secno">3.9.3 </span>Property: ReturnValue</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a name="ReturnValue">dqr:ReturnValue</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td>Represents the (constant) return value of a function</td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>dqr:FunctionParam</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>xsd:anySimpleType</td>
+            </tr>
+            <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			<!--
+            <tr>
+              <td class="prop">Note:</td>
+              <td></td>
+            </tr>
+			-->
+          </tbody>
+        </table>
+      </section>		  
+	  
+  </section>
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">4. </span>Example Usage </h2>
+    This section shows some examples to illustrate the application of the Data Quality Assessment Requirements vocabulary.
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">4.1 </span>Expressing data quality requirements</h3>
+
+ <pre>
+:OverallRequirement
+	a dqr:QualityRequirementSpec ;
+	dqr:hasRequirements :requirement1, :requirement2 ;
+	dqr:hasAssessment :OverallAssessment
+	.
+</pre>
+
+      <h3><span class="secno">4.2 </span>Expressing a particular requirement</h3>
+
+ <pre>
+:requirement1
+	a dqr:QualityRequirement ;
+	dqr:hasRequirementType dqr:SimpleMetric ;
+	dqr:hasRequirementConcept dqv:LowLatencyMetric ;
+	dqr:hasImplementation ex:LowLatencyImpl ;
+	dqr:expectedDataType xsd:double ;
+	dqr:hasUnit muo:Seconds 
+	dqr:hasAssessment :assessment1
+	dqr:hasAssessmentParam [
+		a dqr:AssessmentParam ;
+		dqr:hasParamType dqr:LowerThanParam ;
+		dqr:hasValue "2.0"^^xsd:double 
+	]
+	.
+</pre>
+
+ <pre>
+:requirement2
+	a dqr:QualityRequirement ;
+	dqr:hasRequirementType dqr:ShapeConstraint ;
+	dqr:hasRequirementConcept shacl:MyPersonPropertyShape ;
+	dqr:expectedDataType sd:integer ;
+	dqr:hasAssessment :assessment2
+	dqr:hasAssessmentParam [
+		a dqr:AssessmentParam ;
+		dqr:hasParamType dqr:LowerThanParam ;
+		dqr:hasValue "100"^^xsd:integer 
+	]
+	.
+</pre>
+
+      <h3><span class="secno">4.3 </span>Expressing an assessment function</h3>
+
+ <pre>
+:assessment1
+	a dqr:QualityAssessment ;
+	dqr:ReturnType dqr:QualityRatio ;
+	dqr:ReturnValue dqr:FunctionalValue ;
+	dqr:hasCondition [
+		a dqr:AssessmentCondition ;
+		dqr:ValueLowerThan "0.0"^^xsd:double ;
+		dqr:hasAssessmentFunction [
+			a dqr:AssessmentFunction ;
+			dqr:hasFunctionType dqr:ConstantFunction ;
+			dqr:hasFunctionParam [
+				a dqr:FunctionParam ;
+				dqr:ReturnValue "0.0"^^xsd:double
+			]
+		]
+	]
+	dqr:hasCondition [
+		a dqr:AssessmentCondition ;
+		dqr:ValueGreaterEqualThan "0.0"^^xsd:double ;
+		dqr:ValueLowerEqualThan "2.0"^^xsd:double ;
+		dqr:hasAssessmentFunction [
+			a dqr:AssessmentFunction ;
+			dqr:hasFunctionType dqr:LinearFunction ;
+			dqr:hasFunctionParam [
+				a dqr:FunctionParam ;
+				dqr:StartValue "1.0"^^xsd:double
+			], [
+				a dqr:FunctionParam ;
+				dqr:EndValue "0.0"^^xsd:double
+			]
+		]
+	]		
+	dqr:hasCondition [
+		a dqr:AssessmentCondition ;
+		dqr:ValueGreaterThan "2.0"^^xsd:double ;
+		dqr:hasAssessmentFunction [
+			a dqr:AssessmentFunction ;
+			dqr:hasFunctionType dqr:ConstantFunction ;
+			dqr:hasFunctionParam [
+				a dqr:FunctionParam ;
+				dqr:ReturnValue "0.0"^^xsd:double 
+			]
+		]
+	]		
+	.
+</pre>
+
+      <h3><span class="secno">4.4 </span>Instantiating a particular dataset </h3>
+
+ <pre>
+:dataset1 
+    a dcat:Dataset ;
+    dcterms:title "My dataset" ; 
+    dcat:distribution :distribution1
+    .
+
+:distribution1
+    a dcat:Distribution ;
+    dcterms:title "SPARQL endpoint with RDF/XML distribution of dataset" ;
+    dqv:hasQualityMeasurement :measurement1, :measurement2
+    .
+</pre>
+
+      <h3><span class="secno">4.4 </span>Measuring a quality metric via DQV </h3>
+
+ <pre>
+:measurement1 
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :distribution1 ;
+    dqv:isMeasurementOf :LowLatencyMetric ;
+    dqv:value "0.8627876"^^xsd:double 
+    .
+</pre>
+
+      <h3><span class="secno">4.5 </span>Calculating an overall assessment score </h3>
+
+ <pre>
+:OverallAssessment	
+	a dqr:QualityAssessmentCombination ;
+	dqr:ReturnType dqr:QualityRatio ;
+	dqr:hasAssessmentTerms [
+		a dqr:QualityAssessmentTerm ;
+		dqr:hasWeight "0.6"xsd:double ;
+		dqr:hasAssessment :assessment1 
+	], [
+		a dqr:QualityAssessmentTerm ;
+		dqr:hasWeight "0.4"^^xsd:double ;
+		dqr:hasAssessment :assessment2
+	]
+	.	
+</pre>
+
+    </section>
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">5. </span>License specification</h2>
+	This work is licensed under a <a href="http://creativecommons.org/licenses/by/1.0/" target="_blank">Creative Commons Attribution License</a>.
+  </section>
+	
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">A. </span>Change history</h2>
+    <ul>
+      <li>2017-05-14 Initial version 0.1 of the document / AL </li>
+    </ul>
+  </section>
+
+
+  <section typeof="bibo:Chapter" property="bibo:hasPart">
+    <h2><span class="secno">B. </span>References </h2>
+
+    <section typeof="bibo:Chapter" property="bibo:hasPart">
+      <h3><span class="secno">B.1 </span>Informative references   </h3>
+      <dl class="bibliography" resource="">
+
+</dd>	  
+<dt>[AhmadEtAl]</dt>
+<dd>	
+Ahmad, A.A., Troncy, R., Senart, A.: Roomba: An extensible framework to
+validate and build dataset profiles. In: Lecture Notes in Computer Science
+(including subseries Lecture Notes in Artificial Intelligence and Lecture Notes
+in Bioinformatics). vol. 9341, pp. 325{339 (2015)
+</dd>	  
+<dt>[DasuEtAl]</dt>
+<dd>	
+Dasu, T., Vesonder, G.T., Wright, J.R.: Data quality through knowledge
+engineering. In: Proceedings of the Ninth ACM SIGKDD International
+Conference on Knowledge Discovery and Data Mining. pp. 705{710. KDD
+'03 (2003)
+</dd>	  
+<dt>[DebattistaEtAl]</dt>
+<dd>	
+Debattista, J., Lange, C., Auer, S.: Daq, an ontology for dataset quality
+information. In: CEUR Workshop Proceedings. vol. 1184 (2014)
+</dd>	  
+<dt>[FurberEtAl]</dt>
+<dd>	
+Furber, C., Hepp, M.: Towards a vocabulary for data quality management in
+semantic web architectures. Proceedings of the 1st International Workshop
+on Linked Web Data Management - LWDM '11 p. 1
+</dd>	   
+<dt>[KontokostasEtAl]</dt>
+<dd>	
+Kontokostas, D., Brummer, M., Hellmann, S., Lehmann, J., Ioannidis, L.:
+NLP Data Cleansing Based on Linguistic Ontology Constraints, pp. 224{239.
+Springer International Publishing, Cham (2014)
+</dd>	  
+<dt>[LangerEtAl]</dt>
+<dd>	
+Langer, A., Gaedke, M.: Fame.Q - A Formal Approach to Master Quality in
+Enterprise Linked Data. In: Proceedings of the 15th International Conference
+WWW/Internet (ICWI2016). pp. 51{58. IADIS (October 2016)
+</dd>	  
+<dt>[RedmanEtAl]</dt>
+<dd>	
+Redman, T.C.: Data Quality: The Field Guide. Digital Press, Newton, MA,
+USA (2001)
+</dd>	  
+<dt>[WangEtAl]</dt>
+<dd>	
+Wang, R. Y., and Strong, D.M.: Beyond accuracy: What data quality means
+to data consumers. Journal of Management Information Systems. Journal of
+Management Information Systems 12(4), 5{33 (1996)
+</dd>	  
+<dt>[ZaveriEtAl]</dt>
+<dd>	
+Zaveri, A., Rula, A., Maurino, A., Pietrobon, R., Lehmann, J., Auer, S.:
+Quality Assessment for Linked Open Data: A Survey. Semantic Web Journal
+(by IOS Press) pp. 1{31
+</dd>
+	  
+	  
+      </dl>
+    </section>
+  </section>
+</body>
+</html>
