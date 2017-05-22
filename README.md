@@ -8,8 +8,8 @@ Further description at http://purl.org/net/vsr/daqar
 
 Contact: 
 
-André Langer
-Professorship for Distruted and Self-Organizing Systems
-Chemnitz University of Technology
-Germany
-andre.langer@informatik.tu-chemnitz.de
+__André Langer__<br/>
+Professorship for Distruted and Self-Organizing Systems<br/>
+Chemnitz University of Technology<br/>
+Germany<br/>
+[andre.langer@informatik.tu-chemnitz.de]
