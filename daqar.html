@@ -7,7 +7,7 @@
   <title>DaQAR - The Data Quality Assessment Requirements Vocabulary</title>
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://purl.org/net/vsr/daqar/">
-  <link href="daqar.rdf" rel="alternate"  type="application/rdf+xml" />
+  <link href="daqar.owl" rel="alternate"  type="application/rdf+xml" />
   
   <style>
 	table.definition th:first-child { width: 200px; }
@@ -109,6 +109,8 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
       <img src="erd.png">
       <figcaption>Fig. <span class="figno">1</span> <span class="fig-title">DaQAR data model with main relations</span></figcaption>
     </figure>
+	
+	A machine-readable version of this ontology is available at <a href="daqar.owl">daqar.owl</a>.
 	
   </section>
 
@@ -431,7 +433,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
           <tbody>
             <tr>
               <td class="prop">Definition:</td>
-              <td><Indicates the type of examined quality aspect /td>
+              <td>Indicates the type of examined quality aspect</td>
             </tr>
             <tr>
               <td class="prop">Domain:</td>
@@ -622,7 +624,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
             </tr>
             <tr>
               <td class="prop">Range:</td>
-              <td>dqr:QualityAssessmentParam</td>
+              <td>dqr:AssessmentParam</td>
             </tr>
 			<!--
             <tr>
@@ -675,7 +677,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
           <tbody>
             <tr>
               <td class="prop">Definition:</td>
-              <td></td>
+              <td>Indicates the type of the assessment param</td>
             </tr>
             <tr>
               <td class="prop">Domain:</td>
@@ -720,7 +722,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
             </tr>
             <tr>
               <td class="prop">Domain:</td>
-              <td>dqr:QualityAssessmentParam</td>
+              <td>dqr:AssessmentParam</td>
 			  </tr>
             <tr>
               <td class="prop">Range:</td>
