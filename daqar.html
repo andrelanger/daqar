@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://purl.org/net/vsr/daqar/">
   <link href="daqar.owl" rel="alternate"  type="application/rdf+xml" />
+  <link href="daqar.ttl" rel="alternate"  type="text/turtle" />
   
   <style>
 	table.definition th:first-child { width: 200px; }
@@ -110,7 +111,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
       <figcaption>Fig. <span class="figno">1</span> <span class="fig-title">DaQAR data model with main relations</span></figcaption>
     </figure>
 	
-	A machine-readable version of this ontology is available at <a href="daqar.owl">daqar.owl</a>.
+	A machine-readable version of this ontology is available at <a href="daqar.owl">daqar.owl</a> or <a href="daqar.ttl">daqar.ttl</a>.
 	
   </section>
 
@@ -764,7 +765,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
             <td>This can either be an individually defined assessment function or a well-known assessment function. A well-known assessment function is a globally provided QualityAssessment URL for re-occuring assessment function patterns. <br/>
 			Currently, the following well-known QualityAssessment function descriptions are supported:<br/>
 			<ul>
-			<li>dqr:MaxValueAssessmentFunction - a linear quality assessment function for a measurement value from 0.0 (best) to a max value (worst), dqr:QualityAssessmentParam dqr:LowerThanParam</li>
+			<li>dqr:MaxValueAssessmentFunction - a linear quality assessment function for a measurement value from 0.0 (best) to a max value (worst), dqr:AssessmentParam dqr:LowerThanParam</li>
 			</ul>
 			This list is open for future extensions.
 			</td>
@@ -1356,7 +1357,7 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
 	a dqr:QualityRequirement ;
 	dqr:hasRequirementType dqr:ShapeConstraint ;
 	dqr:hasRequirementConcept shacl:MyPersonPropertyShape ;
-	dqr:expectedDataType sd:integer ;
+	dqr:expectedDataType xsd:integer ;
 	dqr:hasAssessment :assessment2
 	dqr:hasAssessmentParam [
 		a dqr:AssessmentParam ;
