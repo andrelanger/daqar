@@ -29,19 +29,19 @@
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#EndValue -->
+    <!-- http://purl.org/net/vsr/daqar#hasEndValue -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#EndValue">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasEndValue">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#FunctionParam"/>
         <rdfs:comment>Represents the end value of a function</rdfs:comment>
-        <rdfs:label>EndValue</rdfs:label>
+        <rdfs:label>hasEndValue</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ReturnType -->
+    <!-- http://purl.org/net/vsr/daqar#hasReturnType -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ReturnType">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasReturnType">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#QualityAssessment"/>
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#QualityAssessmentCombination"/>
         <rdfs:range rdf:resource="http://purl.org/net/vsr/daqar#ReturnType"/>
@@ -49,9 +49,9 @@
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ReturnValue -->
+    <!-- http://purl.org/net/vsr/daqar#hasReturnValue -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ReturnValue">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasReturnValue">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#FunctionParam"/>
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#QualityAssessment"/>
         <rdfs:range rdf:resource="http://purl.org/net/vsr/daqar#ReturnValue"/>
@@ -59,52 +59,52 @@
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#StartValue -->
+    <!-- http://purl.org/net/vsr/daqar#hasStartValue -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#StartValue">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasStartValue">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#FunctionParam"/>
         <rdfs:comment>Represents the start value of a function</rdfs:comment>
-        <rdfs:label>StartValue</rdfs:label>
+        <rdfs:label>hasStartValue</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ValueGreaterEqualThan -->
+    <!-- http://purl.org/net/vsr/daqar#hasValueGreaterEqualThan -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ValueGreaterEqualThan">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasValueGreaterEqualThan">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#AssessmentCondition"/>
         <rdfs:comment>Indicates what happens if the measured value is greater or euqal than the specified value</rdfs:comment>
-        <rdfs:label>ValueGreaterEqualThan</rdfs:label>
+        <rdfs:label>hasValueGreaterEqualThan</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ValueGreaterThan -->
+    <!-- http://purl.org/net/vsr/daqar#hasValueGreaterThan -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ValueGreaterThan">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasValueGreaterThan">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#AssessmentCondition"/>
         <rdfs:comment>Indicates what happens if the measured value is greater than the specified value</rdfs:comment>
-        <rdfs:label>ValueGreaterThan</rdfs:label>
+        <rdfs:label>hasValueGreaterThan</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ValueLowerEqualThan -->
+    <!-- http://purl.org/net/vsr/daqar#hasValueLowerEqualThan -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ValueLowerEqualThan">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasValueLowerEqualThan">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#AssessmentCondition"/>
         <rdfs:comment>Indicates what happens if the measured value is lower or euqal than the specified value</rdfs:comment>
-        <rdfs:label>ValueLowerEqualThan</rdfs:label>
+        <rdfs:label>hasValueLowerEqualThan</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/net/vsr/daqar#ValueLowerThan -->
+    <!-- http://purl.org/net/vsr/daqar#hasValueLowerThan -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#ValueLowerThan">
+    <owl:ObjectProperty rdf:about="http://purl.org/net/vsr/daqar#hasValueLowerThan">
         <rdfs:domain rdf:resource="http://purl.org/net/vsr/daqar#AssessmentCondition"/>
         <rdfs:comment>Indicates what happens if the measured value is lower than the specified value</rdfs:comment>
-        <rdfs:label>ValueLowerThan</rdfs:label>
+        <rdfs:label>hasValueLowerThan</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -333,7 +333,7 @@ This can be a daq:Metric, a dqv:Metric, a SHACL URL or any other URI representin
 
     <owl:Class rdf:about="http://purl.org/net/vsr/daqar#ConstantFunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/net/vsr/daqar#FunctionType"/>
-        <rdfs:comment>A mapping function defined through a constant dqr:ReturnValue</rdfs:comment>
+        <rdfs:comment>A mapping function defined through a constant dqr:hasReturnValue</rdfs:comment>
         <rdfs:label>ConstantFunction</rdfs:label>
     </owl:Class>
     
@@ -353,7 +353,7 @@ This can be a daq:Metric, a dqv:Metric, a SHACL URL or any other URI representin
 
     <owl:Class rdf:about="http://purl.org/net/vsr/daqar#CustomFunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/net/vsr/daqar#FunctionType"/>
-        <rdfs:comment>A custom defined mapping function defined through a dqr:CustomFunctionTerm</rdfs:comment>
+        <rdfs:comment>A custom defined mapping function defined through a dqr:hasCustomFunctionTerm</rdfs:comment>
         <rdfs:label>CustomFunction</rdfs:label>
     </owl:Class>
     
@@ -407,7 +407,7 @@ This can be a daq:Metric, a dqv:Metric, a SHACL URL or any other URI representin
 
     <owl:Class rdf:about="http://purl.org/net/vsr/daqar#LinearFunction">
         <rdfs:subClassOf rdf:resource="http://purl.org/net/vsr/daqar#FunctionType"/>
-        <rdfs:comment>A mapping function defined through a dqr:StartValue and dqr:EndValue</rdfs:comment>
+        <rdfs:comment>A mapping function defined through a dqr:hasStartValue and dqr:hasEndValue</rdfs:comment>
         <rdfs:label>LinearFunction</rdfs:label>
     </owl:Class>
     
@@ -559,15 +559,15 @@ This can be a daq:Metric, a dqv:Metric, a SHACL URL or any other URI representin
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="http://purl.org/net/vsr/daqar#ReturnType">
-        <rdfs:label>ReturnType</rdfs:label>
+    <rdf:Description rdf:about="http://purl.org/net/vsr/daqar#hasReturnType">
+        <rdfs:label>hasReturnType</rdfs:label>
         <rdfs:comment>Indicates the numeric type of the returned assessment result or
 Indicates the type of the returned value for the assessment result</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="http://purl.org/net/vsr/daqar#ReturnValue">
+    <rdf:Description rdf:about="http://purl.org/net/vsr/daqar#hasReturnValue">
         <rdfs:comment>Indicates the computation type of the returned assessment value or
 Represents the (constant) return value of a function</rdfs:comment>
-        <rdfs:label>ReturnValue</rdfs:label>
+        <rdfs:label>hasReturnValue</rdfs:label>
     </rdf:Description>
 </rdf:RDF>
 
