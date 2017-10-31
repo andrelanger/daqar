@@ -1376,13 +1376,13 @@ primarily DCAT and DQV. It includes the following concepts depicted in figure 1.
 	dqr:hasReturnValue dqr:FunctionalValue ;
 	dqr:hasCondition [
 		a dqr:AssessmentCondition ;
-		dqr:ValueLowerThan "0.0"^^xsd:double ;
+		dqr:hasValueLowerThan "0.0"^^xsd:double ;
 		dqr:hasAssessmentFunction [
 			a dqr:AssessmentFunction ;
 			dqr:hasFunctionType dqr:ConstantFunction ;
 			dqr:hasFunctionParam [
 				a dqr:FunctionParam ;
-				dqr:ReturnValue "0.0"^^xsd:double
+				dqr:hasReturnValue "0.0"^^xsd:double
 			]
 		]
 	]
